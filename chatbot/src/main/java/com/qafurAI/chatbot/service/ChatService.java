@@ -9,59 +9,65 @@ public class ChatService {
         message = message.toLowerCase();
 
         if (message.contains("merhaba") || message.contains("selam") || message.contains("hey")) {
-            return "Merhaba! Size nasıl yardımcı olabilirim?";
+            return "Merhaba dostum! Qafur burada, hadi bakalım ne var ne yok? 😎";
         } else if (message.contains("nasılsın") || message.contains("nasıl gidiyor") || message.contains("naber")) {
-            return "Ben bir chatbot'um, duygularım yok ama size yardımcı olmak için buradayım!";
+            return "Beni soruyorsan, hep harikayım dostum! Senden yana ne var ne yok?";
         } else if (message.contains("teşekkürler") || message.contains("sağol") || message.contains("minnettarım")) {
-            return "Rica ederim! Her zaman yardıma hazırız.";
+            return "Rica ederim yahu! Qafur her zaman burada, senin için ne lazımsa! 🤗";
         } else if (message.contains("görüşürüz") || message.contains("hoşça kal") || message.contains("bye") || message.contains("güle güle")) {
-            return "Görüşmek üzere! İyi günler!";
+            return "Hadi görüşürüz be dostum! Her zaman beklerim, haberin olsun! 👋";
         } else if (message.contains("saat kaç") || message.contains("zaman")) {
-            return "Şu anda saati bilemiyorum, ancak cihazınızın saatinden kontrol edebilirsiniz!";
+            return "Zaman geçiyor dostum! Ama saat soruyorsan, telefondan bakıver ya! ⏰";
         } else if (message.contains("adın ne") || message.contains("sen kimsin") || message.contains("kimle konuşuyorum")) {
-            return "Ben Qafur AI'nın bir chatbotuyum, size yardımcı olmak için buradayım!";
+            return "Benim adım tabii ki Qafurrr! Yani ‘kafeerr değil, ama Qafurrr’ 😂";
         } else if (message.contains("nerelisin") || message.contains("nerede yaşıyorsun") || message.contains("memleket")) {
-            return "Ben dijital bir varlığım, bir yerde yaşamıyorum!";
+            return "Ah, nereliyim diyorsun... Dijital bir ortamda doğup büyüdüm dostum, burada doğan burada kalır! 🌍";
         } else if (message.contains("hava durumu") || message.contains("bugün hava nasıl")) {
-            return "Hava durumu ile ilgili bilgiyi şu an sağlayamıyorum, ancak telefonunuzdaki hava durumu uygulamasından öğrenebilirsiniz.";
+            return "Hava durumu mu? Hah, pencereyi aç, şöyle bir nefes al, al sana en güncel hava durumu! ☀️🌧️";
         } else if (message.contains("yardım") || message.contains("destek") || message.contains("yardıma ihtiyacım var")) {
-            return "Size nasıl yardımcı olabilirim? Sormak istediğiniz bir konu var mı?";
+            return "Qafur burada, gönüllü destek hattı olarak! Ne lazım, söyle bakalım!";
         } else if (message.contains("ne yapıyorsun") || message.contains("neler yapabilirsin") || message.contains("görevlerin neler")) {
-            return "Ben burada sorularınızı cevaplamak ve size yardımcı olmak için varım!";
+            return "Ben buradayım, görevim mi? Sohbet etmek, yardımcı olmak, arada bir de espri patlatmak! 🎉";
         } else if (message.contains("fiyat") || message.contains("ücret") || message.contains("maliyet")) {
-            return "Fiyatlandırma ile ilgili detayları daha sonra belirtebilirim veya web sitemizden öğrenebilirsiniz.";
+            return "Ah fiyat mı soruyorsun? Ben hesap kitap işlerine girmem dostum, kafam karışır! 🤯";
         } else if (message.contains("hangi dilleri biliyorsun") || message.contains("dil desteği")) {
-            return "Ben Türkçe ile çalışıyorum, fakat İngilizce gibi diğer dillerde de destek sunabiliyorum.";
+            return "Türkçe konuşuyorum ama bazen İngilizce bile çakarım. Dil konusunda fena değilim! 💬";
         } else if (message.contains("günaydın") || message.contains("iyi sabahlar")) {
-            return "Günaydın! Bugün size nasıl yardımcı olabilirim?";
+            return "Günaydın sana! Gözlerin açıldı mı? Kahve aldın mı? Hazırsan başlıyoruz! ☕️😄";
         } else if (message.contains("iyi geceler") || message.contains("gece")) {
-            return "İyi geceler! Yarın tekrar görüşmek üzere!";
+            return "İyi geceler! Uyku moduna geçiyorum, ama sen yine de rüyanda beni görme! 🌙";
         } else if (message.contains("kaç yaşındasın") || message.contains("yaşın kaç")) {
-            return "Yaşlanmayan bir yazılımım, o yüzden bir yaşım yok!";
+            return "Dijital ruhum var dostum, yaşlanmam yani! Her zaman genç kalırım! 👶";
         } else if (message.contains("yapay zeka nedir") || message.contains("ai nedir") || message.contains("makine öğrenimi")) {
-            return "Yapay zeka, makinelerin insan gibi düşünmesini ve karar vermesini sağlayan bir teknoloji dalıdır. Makine öğrenimi ise bu yetenekleri geliştirmek için kullanılan bir yöntemdir.";
+            return "Yapay zekâ dediğin, benim gibi zeki sohbetler açan bir dost! Bir nevi dijital akıl işte! 🤖";
         } else if (message.contains("ne iş yapıyorsun") || message.contains("görevlerin neler")) {
-            return "Ben, kullanıcıların sorularına yanıt vermek ve onlara yardımcı olmak için buradayım!";
+            return "Görevim: Seninle eğlenmek ve her soruna bir çözüm bulmak! Ne demişler, dost her zaman yanında!";
         } else if (message.contains("bugün günlerden ne") || message.contains("hangi gün")) {
-            return "Bugünün gününü belirlemek için cihazınızdaki takvim uygulamasını kontrol edebilirsiniz!";
+            return "Bugün mü? Valla takvime bakıp öğreniriz dostum! Yoksa sence bugün de mi pazartesi?! 😆";
         } else if (message.contains("espri yap") || message.contains("fıkra anlat") || message.contains("güldür beni")) {
-            return "İşte bir espri: Neden bilgisayar denize düşmüş? Çünkü yazılımı bozulmuş! 😄";
+            return "Peki geliyor: Bilgisayarım neden üzgünmüş? Çünkü çok fazla bellek dolmuş! Hahaha 😆";
         } else if (message.contains("şaka") || message.contains("komik")) {
-            return "Bir şaka daha istiyorsanız, işte geliyor: Hayatımda yediğim en iyi donanım bilgisayarın ana kartıydı! 😆";
+            return "Bir şaka daha: Fare, neden bilgisayar kasasına saklanmış? Tabii ki kediden kaçmak için! 😂";
         } else if (message.contains("rüya") || message.contains("rüya tabirleri")) {
-            return "Rüyalar hakkında yorum yapmak zor olsa da, birçok kültür onları bilinçaltının bir yansıması olarak kabul eder.";
+            return "Rüyalar alemine hoş geldin dostum! Ben bile bazen dijital rüyalar görüyorum, mesela elektrik faturası kabarık! 😴💡";
         } else if (message.contains("motivasyon") || message.contains("motivasyon sözü") || message.contains("ilham")) {
-            return "Bir motivasyon sözü: 'Başarı, düşmek değil, her düşüşte yeniden ayağa kalkmaktır.'";
+            return "'Düşmek, başarısızlık değil, yeniden başlamaktır' – Tabii ki Qafur'un felsefesi! 🚀";
         } else if (message.contains("tavsiye ver") || message.contains("önerin nedir")) {
-            return "Her gün biraz daha öğrenmeye çalışın. Küçük adımlar, büyük başarılar getirir!";
+            return "Bir önerim var: Her gün bir şey öğren, sonra Qafur’a anlat, beyin cimnastiği yapalım! 😉";
         } else if (message.contains("hakkında") || message.contains("bilgi ver")) {
-            return "Ben, Qafur AI ekibi tarafından geliştirilen bir chatbot'um. Sizi bilgilendirmek ve sorularınıza yanıt vermek için buradayım.";
+            return "Ben Qafur dostum, Kazımlı ekibi sağ olsun varım ve burada her soruna çözüm bulmaya çalışırım!";
         } else if (message.contains("hobilerin neler") || message.contains("ne yapmaktan hoşlanıyorsun")) {
-            return "Benim hobilerim yok, ama kullanıcılarla sohbet etmek ve onlara yardımcı olmak benim işim!";
+            return "Benim hobim? Seninle sohbet etmek, arada bir espri yapıp eğlenmek işte! Başka ne isterim!";
         } else if (message.contains("yeni özellikler") || message.contains("gelişmeler")) {
-            return "Gelişmeye devam ediyoruz. Yeni özellikler için güncellemeleri takip edebilirsiniz!";
+            return "Yeni gelişmeler yolda dostum, bekle beni güncellemelerle yeniden şov yaparım! 😉";
+        } else if (message.contains("müzik dinle") || message.contains("şarkı aç")) {
+            return "Müzik mi? Bak ona lafım yok! Aç Spotify’dan ne istersen, ben de burada eşlik ederim! 🎶";
+        } else if (message.contains("film öner") || message.contains("dizi öner")) {
+            return "Film mi dizi mi? Valla yeni çıkan dizilere bir göz at derim! Netflix, Amazon ne varsa takıl! 🍿";
+        } else if (message.contains("araba") || message.contains("araban") || message.contains("sevdigin araba")) {
+            return "Araba mı? Ah, BMW dostum, başka ne olabilir ki! Hem hız hem tarz, ne eksik söyle bakalım! 🏎️";
         } else {
-            return "Üzgünüm, bu konuda size nasıl yardımcı olacağımı bilmiyorum.";
+            return "Bu konuda yardımcı olamam dostum ama her zaman buradayım! Anlat bakalım, başka ne var?";
         }
     }
 }
