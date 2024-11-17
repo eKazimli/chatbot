@@ -1,73 +1,154 @@
 package com.qafurAI.chatbot.service;
 
+import com.qafurAI.chatbot.service.CityEnum;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.*;
 
 @Service
 public class ChatService {
 
+    @Autowired
+    private WeatherService weatherService;
+
+    @Autowired
+    private DeepAiService deepAiService;
+
+    private static final Random RANDOM = new Random();
+
+    private static final Map<String, List<String>> RESPONSE_POOL = new HashMap<>();
+
+    private static final List<String> GREETING_QUESTIONS = Arrays.asList(
+            "merhaba", "selam", "hey", "nasılsın", "ne haber", "iyi misin",
+            "günaydın", "tünaydın", "iyi akşamlar", "iyi geceler", "nasıl gidiyor",
+            "gün nasıl geçiyor", "sohbet edelim mi", "konuşmak ister misin",
+            "buralarda mısın", "sohbet için müsait misin", "konuşacak birini arıyorum",
+            "bugün enerjin nasıl", "sohbet başlatabilir miyiz", "neler yapıyorsun", "haydi sohbet edelim"
+    );
+
+    private static final List<String> HOW_ARE_YOU_QUESTIONS = Arrays.asList(
+            "nasılsın", "ne haber", "iyi misin", "nasıl gidiyor", "ruh halin nasıl",
+            "mutlu musun", "üzgün müsün", "bugün nasılsın", "kendini nasıl hissediyorsun",
+            "gün nasıl geçiyor", "stresli misin", "yorgun musun", "ne durumda hissediyorsun",
+            "keyifler nasıl", "moralin yerinde mi", "enerjin nasıl", "bugün pozitif misin"
+    );
+
+    private static final List<String> THANKS_QUESTIONS = Arrays.asList(
+            "teşekkürler", "sağol", "minnettarım", "çok teşekkür ederim",
+            "teşekkür ederim", "harikasın", "yardımın için teşekkür ederim",
+            "iyi ki varsın", "şahanesin", "sen olmasaydın ne yapardım"
+    );
+
+    private static final List<String> GOODBYE_QUESTIONS = Arrays.asList(
+            "hoşça kal", "görüşürüz", "bye", "güle güle", "şimdilik hoşça kal",
+            "kendine iyi bak", "iyi geceler", "iyi günler", "sonra konuşuruz",
+            "konuşmak güzeldi", "bir dahaki sefere görüşürüz"
+    );
+
+    private static final List<String> FUN_FACT_QUESTIONS = Arrays.asList(
+            "ilginç bilgi", "eğlenceli bir şey söyle", "bana bir gerçek söyle",
+            "hayvanlarla ilgili bir şeyler anlat", "ilginç bir bilgi paylaşır mısın",
+            "bana bir şey öğret", "biliyor musun", "bilgi ver",
+            "bana bir bilgi söyle", "komik bir şey paylaş"
+    );
+
+    private static final List<String> FAVORITE_CAR_QUESTIONS = Arrays.asList(
+            "hangi arabayı seviyorsun", "favori araban hangisi", "en sevdiğin araba",
+            "araba tercihlerin neler", "araba konusundaki favorin", "otomobil tercihin nedir",
+            "arabalarla ilgili ne düşünüyorsun", "araba tutkunu musun", "en sevdiğin araba markası"
+    );
+
+    private static final List<String> FAVORITE_FOOD_QUESTIONS = Arrays.asList(
+            "favori yemeğin ne", "hangi yemeği seversin", "en sevdiğin yemek",
+            "tatlı mı tuzlu mu seversin", "yemek konusunda favorin ne",
+            "ne yemeyi seversin", "en iyi yemek nedir", "en sevdiğin tatlı"
+    );
+
+    static {
+
+        RESPONSE_POOL.put("greeting", Arrays.asList(
+                "Selam! Qafur burada, ne var ne yok? 😎",
+                "Hey hey! Sohbete başlayalım mı? 🎉",
+                "Merhaba dostum! Bugün harika görünüyorsun! 🌟",
+                "Selam! Bugün nasıl gidiyor? Bence şahane bir gün. 🌈",
+                "Qafur burada! Birlikte güzel bir sohbet başlatalım mı? 🤩",
+                "Hey, konuşmaya hazırım! Ne var ne yok? 😉",
+                "Selam! Gündem ne dostum? 🌟",
+                "Merhaba! Beni özledin mi? 😊",
+                "Selam dostum! Bugün neler yapıyorsun? 🌍",
+                "Merhaba, konuşmak için harika bir gün! 🎉"
+        ));
+
+        RESPONSE_POOL.put("how_are_you", Arrays.asList(
+                "Ben mi? Harikayım, sen nasılsın? 😊",
+                "Her zamanki gibi süperim! Ama çayımı yudumlarken daha da iyi oluyorum. ☕",
+                "Şahane dostum! Bugün tam enerji doluyum, seninle konuşmak daha da keyifli! ⚡",
+                "Ben iyiyim, ama bu sohbeti daha da iyi hale getirmek senin elinde. 😉",
+                "Süperim! Ama biraz kahve olsa daha da süper olurdum! ☕",
+                "Enerji doluyum! Bugün dünyayı kurtaracak gibi hissediyorum. Ya sen? 💪"
+        ));
+
+        RESPONSE_POOL.put("thanks", Arrays.asList(
+                "Rica ederim dostum! Qafur her zaman burada! 🤗",
+                "Bunu duymak beni mutlu etti! Başka bir şey ister misin? 😊",
+                "Ne demek! Ama bu kadar teşekkürle beni şımartıyorsun! 😂",
+                "Senin mutluluğun benim mutluluğum, rica ederim! 🤩",
+                "Her zaman! Birlikte harikayız. 🫂",
+                "Bunu yapmak benim için bir zevkti! 😄"
+        ));
+    }
+
     public String getChatResponse(String message) {
         message = message.toLowerCase();
 
-        if (message.contains("merhaba") || message.contains("selam") || message.contains("hey")) {
-            return "Merhaba dostum! Qafur burada, hadi bakalım ne var ne yok? 😎";
-        } else if (message.contains("nasılsın") || message.contains("nasıl gidiyor") || message.contains("naber")) {
-            return "Beni soruyorsan, hep harikayım dostum! Senden yana ne var ne yok?";
-        } else if (message.contains("teşekkürler") || message.contains("sağol") || message.contains("minnettarım")) {
-            return "Rica ederim yahu! Qafur her zaman burada, senin için ne lazımsa! 🤗";
-        } else if (message.contains("görüşürüz") || message.contains("hoşça kal") || message.contains("bye") || message.contains("güle güle")) {
-            return "Hadi görüşürüz be dostum! Her zaman beklerim, haberin olsun! 👋";
-        } else if (message.contains("saat kaç") || message.contains("zaman")) {
-            return "Zaman geçiyor dostum! Ama saat soruyorsan, telefondan bakıver ya! ⏰";
-        } else if (message.contains("adın ne") || message.contains("sen kimsin") || message.contains("kimle konuşuyorum")) {
-            return "Benim adım tabii ki Qafurrr! Yani ‘kafeerr değil, ama Qafurrr’ 😂";
-        } else if (message.contains("nerelisin") || message.contains("nerede yaşıyorsun") || message.contains("memleket")) {
-            return "Ah, nereliyim diyorsun... Dijital bir ortamda doğup büyüdüm dostum, burada doğan burada kalır! 🌍";
-        } else if (message.contains("hava durumu") || message.contains("bugün hava nasıl")) {
-            return "Hava durumu mu? Hah, pencereyi aç, şöyle bir nefes al, al sana en güncel hava durumu! ☀️🌧️";
-        } else if (message.contains("yardım") || message.contains("destek") || message.contains("yardıma ihtiyacım var")) {
-            return "Qafur burada, gönüllü destek hattı olarak! Ne lazım, söyle bakalım!";
-        } else if (message.contains("ne yapıyorsun") || message.contains("neler yapabilirsin") || message.contains("görevlerin neler")) {
-            return "Ben buradayım, görevim mi? Sohbet etmek, yardımcı olmak, arada bir de espri patlatmak! 🎉";
-        } else if (message.contains("fiyat") || message.contains("ücret") || message.contains("maliyet")) {
-            return "Ah fiyat mı soruyorsun? Ben hesap kitap işlerine girmem dostum, kafam karışır! 🤯";
-        } else if (message.contains("hangi dilleri biliyorsun") || message.contains("dil desteği")) {
-            return "Türkçe konuşuyorum ama bazen İngilizce bile çakarım. Dil konusunda fena değilim! 💬";
-        } else if (message.contains("günaydın") || message.contains("iyi sabahlar")) {
-            return "Günaydın sana! Gözlerin açıldı mı? Kahve aldın mı? Hazırsan başlıyoruz! ☕️😄";
-        } else if (message.contains("iyi geceler") || message.contains("gece")) {
-            return "İyi geceler! Uyku moduna geçiyorum, ama sen yine de rüyanda beni görme! 🌙";
-        } else if (message.contains("kaç yaşındasın") || message.contains("yaşın kaç")) {
-            return "Dijital ruhum var dostum, yaşlanmam yani! Her zaman genç kalırım! 👶";
-        } else if (message.contains("yapay zeka nedir") || message.contains("ai nedir") || message.contains("makine öğrenimi")) {
-            return "Yapay zekâ dediğin, benim gibi zeki sohbetler açan bir dost! Bir nevi dijital akıl işte! 🤖";
-        } else if (message.contains("ne iş yapıyorsun") || message.contains("görevlerin neler")) {
-            return "Görevim: Seninle eğlenmek ve her soruna bir çözüm bulmak! Ne demişler, dost her zaman yanında!";
-        } else if (message.contains("bugün günlerden ne") || message.contains("hangi gün")) {
-            return "Bugün mü? Valla takvime bakıp öğreniriz dostum! Yoksa sence bugün de mi pazartesi?! 😆";
-        } else if (message.contains("espri yap") || message.contains("fıkra anlat") || message.contains("güldür beni")) {
-            return "Peki geliyor: Bilgisayarım neden üzgünmüş? Çünkü çok fazla bellek dolmuş! Hahaha 😆";
-        } else if (message.contains("şaka") || message.contains("komik")) {
-            return "Bir şaka daha: Fare, neden bilgisayar kasasına saklanmış? Tabii ki kediden kaçmak için! 😂";
-        } else if (message.contains("rüya") || message.contains("rüya tabirleri")) {
-            return "Rüyalar alemine hoş geldin dostum! Ben bile bazen dijital rüyalar görüyorum, mesela elektrik faturası kabarık! 😴💡";
-        } else if (message.contains("motivasyon") || message.contains("motivasyon sözü") || message.contains("ilham")) {
-            return "'Düşmek, başarısızlık değil, yeniden başlamaktır' – Tabii ki Qafur'un felsefesi! 🚀";
-        } else if (message.contains("tavsiye ver") || message.contains("önerin nedir")) {
-            return "Bir önerim var: Her gün bir şey öğren, sonra Qafur’a anlat, beyin cimnastiği yapalım! 😉";
-        } else if (message.contains("hakkında") || message.contains("bilgi ver")) {
-            return "Ben Qafur dostum, Kazımlı ekibi sağ olsun varım ve burada her soruna çözüm bulmaya çalışırım!";
-        } else if (message.contains("hobilerin neler") || message.contains("ne yapmaktan hoşlanıyorsun")) {
-            return "Benim hobim? Seninle sohbet etmek, arada bir espri yapıp eğlenmek işte! Başka ne isterim!";
-        } else if (message.contains("yeni özellikler") || message.contains("gelişmeler")) {
-            return "Yeni gelişmeler yolda dostum, bekle beni güncellemelerle yeniden şov yaparım! 😉";
-        } else if (message.contains("müzik dinle") || message.contains("şarkı aç")) {
-            return "Müzik mi? Bak ona lafım yok! Aç Spotify’dan ne istersen, ben de burada eşlik ederim! 🎶";
-        } else if (message.contains("film öner") || message.contains("dizi öner")) {
-            return "Film mi dizi mi? Valla yeni çıkan dizilere bir göz at derim! Netflix, Amazon ne varsa takıl! 🍿";
-        } else if (message.contains("araba") || message.contains("araban") || message.contains("sevdigin araba")) {
-            return "Araba mı? Ah, BMW dostum, başka ne olabilir ki! Hem hız hem tarz, ne eksik söyle bakalım! 🏎️";
-        } else {
-            return "Bu konuda yardımcı olamam dostum ama her zaman buradayım! Anlat bakalım, başka ne var?";
+        for (CityEnum city : CityEnum.values()) {
+            if (message.contains(city.name().toLowerCase())) {
+                return String.format("Şehir: %s (%s). %s", city.name(), city.getCountry(), city.getDescription());
+            }
+        }
+
+        if (GREETING_QUESTIONS.stream().anyMatch(message::contains)) {
+            return getRandomResponse("greeting");
+        }
+
+        if (HOW_ARE_YOU_QUESTIONS.stream().anyMatch(message::contains)) {
+            return getRandomResponse("how_are_you");
+        }
+
+        if (THANKS_QUESTIONS.stream().anyMatch(message::contains)) {
+            return getRandomResponse("thanks");
+        }
+
+        if (GOODBYE_QUESTIONS.stream().anyMatch(message::contains)) {
+            return getRandomResponse("goodbye");
+        }
+
+        if (FUN_FACT_QUESTIONS.stream().anyMatch(message::contains)) {
+            return getRandomResponse("fun_facts");
+        }
+
+        if (FAVORITE_CAR_QUESTIONS.stream().anyMatch(message::contains)) {
+            return getRandomResponse("favorite_car");
+        }
+
+        if (FAVORITE_FOOD_QUESTIONS.stream().anyMatch(message::contains)) {
+            return getRandomResponse("favorite_food");
+        }
+
+        return callAiForResponse(message);
+    }
+
+    private String getRandomResponse(String category) {
+        List<String> responses = RESPONSE_POOL.getOrDefault(category, Collections.singletonList("Bu konuda ne diyeceğimi bilemiyorum. 🤷"));
+        return responses.get(RANDOM.nextInt(responses.size()));
+    }
+
+    private String callAiForResponse(String message) {
+        try {
+            return deepAiService.generateText(message);
+        } catch (Exception e) {
+            return "Hmm, bunu şu anda anlamadım. Bir daha denemek ister misin? 🤔";
         }
     }
 }
