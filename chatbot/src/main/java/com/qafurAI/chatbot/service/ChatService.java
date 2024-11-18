@@ -68,9 +68,9 @@ public class ChatService {
     static {
 
         RESPONSE_POOL.put("greeting", Arrays.asList(
-                "Selam! Qafur burada, ne var ne yok? 😎",
-                "Hey hey! Sohbete başlayalım mı? 🎉",
-                "Merhaba dostum! Bugün harika görünüyorsun! 🌟",
+                "Selam! Ben Qafurr, işte burada, ne var ne yok? 😎",
+                "Hey hey! Sohbet etmeye zaman bula biliyormusun? 🎉",
+                "Merhaba Kanki! Bugün ne oldu? nası gidiyor hayat? 🌟",
                 "Selam! Bugün nasıl gidiyor? Bence şahane bir gün. 🌈",
                 "Qafur burada! Birlikte güzel bir sohbet başlatalım mı? 🤩",
                 "Hey, konuşmaya hazırım! Ne var ne yok? 😉",
@@ -148,7 +148,7 @@ public class ChatService {
         try {
             return deepAiService.generateText(message);
         } catch (Exception e) {
-            return "Hmm, bunu şu anda anlamadım. Bir daha denemek ister misin? 🤔";
+            return "Ne dediyini tam anlamamış deyilim 🤔";
         }
     }
 }
