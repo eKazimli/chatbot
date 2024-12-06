@@ -1,6 +1,5 @@
 package com.qafurAI.chatbot.service;
 
-import com.qafurAI.chatbot.service.CityEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,9 +7,6 @@ import java.util.*;
 
 @Service
 public class ChatService {
-
-    @Autowired
-    private WeatherService weatherService;
 
     @Autowired
     private DeepAiService deepAiService;
