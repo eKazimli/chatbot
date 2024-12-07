@@ -144,7 +144,7 @@ public class ChatService {
         try {
             return deepAiService.generateText(message);
         } catch (Exception e) {
-            return "Ne dediyini tam anlamamış deyilim 🤔";
+            return "Ne dediyini tam anlamamış deyilim";
         }
     }
 }
