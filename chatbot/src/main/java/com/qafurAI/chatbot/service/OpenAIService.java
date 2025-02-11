@@ -1,4 +1,3 @@
- 
 package com.qafurAI.chatbot.service;
 
 import org.springframework.http.HttpEntity;
@@ -16,16 +15,16 @@ public class OpenAIService {
 
     public String getAIResponse(String message) {
         RestTemplate restTemplate = new RestTemplate();
-        
+
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Bearer " + API_KEY);
         headers.set("Content-Type", "application/json");
-        
-        String requestBody = "{ "model": "gpt-4", "messages": [{"role": "user", "content": "" + message + ""}]}";
-        
+
+        String requestBody = "{ \"model\": \"gpt-4\", \"messages\": [{\"role\": \"user\", \"content\": \"" + message + "\"}]}";
+
         HttpEntity<String> request = new HttpEntity<>(requestBody, headers);
         ResponseEntity<String> response = restTemplate.exchange(API_URL, HttpMethod.POST, request, String.class);
-        
+
         return response.getBody();
     }
 }
