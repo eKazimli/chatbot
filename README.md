@@ -1,66 +1,141 @@
-Projenin Yetenekleri ve Fonksiyonları:
+ChatBot Projesi
 
-1. Sohbet (Chat) İşlevleri
-    - Kullanıcının mesajlarına yanıt verir.
-    - Her mesaj için farklı ve anlamlı yanıtlar üretebilir.
-    - Mesajları anlamlandırarak, AI (DeepAI) desteği ile daha gelişmiş yanıtlar sunabilir.
+📌 Projenin Genel Tanıtımı
 
-2. AI ile Metin Üretimi
-    - Kullanıcı tarafından verilen bir "prompt" (başlangıç metni) ile AI üzerinden anlamlı metinler oluşturur.
-    - Örneğin:
-        - Girdi: "Bir yaz günü sahilde olmak"
-        - Çıktı: "Sıcak kumlar, dalgaların huzur veren sesi ve güneşin sıcaklığı..."
+Bu proje, kullanıcıların mesajlarını analiz eden ve anlamlı yanıtlar üreten bir AI destekli sohbet botudur.
+Spring Boot, PostgreSQL ve OpenAI API ile geliştirilmiş olup, hem metin tabanlı hem de sesli mesaj desteği sunar.
 
-3. Hava Durumu Bilgisi
-    - Kullanıcının belirttiği şehir için hava durumu bilgisi sağlar.
-    - Şehir adını algılayarak:
-        - Güncel sıcaklık
-        - Hava durumu tahmini (ör. yağmurlu, güneşli)
-    - Dinamik olarak gerçek zamanlı hava durumu entegrasyonu yapılabilir (WeatherService ile).
+🚀 Projenin Yetenekleri ve Fonksiyonları
 
-4. Kullanıcı Profili Yönetimi
-    - Profil Güncelleme: Kullanıcının ad ve soyad bilgilerini alarak veritabanında saklar.
-    - Profil Sorgulama: Kullanıcı adını sorgulayarak kaydedilmiş bilgileri getirir.
-        - Örneğin:
-            - Girdi: "/profil/Ahmet"
-            - Çıktı: "Kayıtlı profil: Ahmet Yılmaz"
-    - Veritabanı (H2) entegrasyonu ile bilgiler kalıcı olarak saklanır.
+1️⃣ Sohbet (Chat) İşlevleri
 
-5. Kullanıcı Bilgilerini Geçici Olarak Saklama
-    - Uygulama çalıştığı sürece:
-        - Kullanıcının ad ve soyad bilgilerini bellekte tutar.
-        - "Adımı hatırla" gibi özellikler sunar.
-    - Örneğin:
-        - Girdi: "/kullanici/adi/Ahmet"
-        - Sonra: "/benim-adim"
-        - Yanıt: "Adın Ahmet, harika bir isim!"
+✅ Kullanıcının mesajlarına anlamlı ve dinamik yanıtlar verir.✅ OpenAI API ile AI destekli gelişmiş cevaplar sunar.✅ Kullanıcının mesajlarını analiz ederek farklı bağlamlarda yanıt üretir.
 
-6. Dinamik Sohbet Geliştirme
-    - Kullanıcı mesajlarına göre özelleştirilmiş yanıtlar oluşturur.
-    - Örnek sorular:
-        - "Nasıl gidiyor?"
-        - "Bana bir şaka yap"
-        - "Hangi arabayı seversin?"
-    - Yanıtlar, kullanıcıdan alınan girdiye göre şekillendirilir.
+2️⃣ AI ile Metin Üretimi
 
-7. H2 Veritabanı Kullanımı
-    - Kullanıcı profilleri, veritabanında saklanır.
-    - Kalıcı olarak ad ve soyad bilgilerini saklar ve getirir.
-    - Veritabanı sorgularıyla daha karmaşık kullanıcı yönetimi yapılabilir.
+✅ Kullanıcının verdiği bir "prompt" üzerinden AI ile anlamlı metinler oluşturur.✅ Örnek: "Bir yaz günü sahilde olmak" → "Sıcak kumlar, dalgaların huzur veren sesi..."✅ AI modeli sayesinde özgün içerikler üretir.
 
-8. Kolay Geliştirilebilirlik
-    - Spring Boot ile geliştirildiği için:
-        - Modüler ve genişletilebilir bir yapı sunar.
-        - Yeni servisler veya API'ler eklemek kolaydır.
-    - Örneğin, daha fazla sohbet yeteneği veya AI modeli eklenebilir.
+3️⃣ Hava Durumu Bilgisi
 
-9. Basit ve Hızlı Test Edilebilirlik
-    - REST API formatında olduğundan Postman gibi araçlarla kolayca test edilebilir.
-    - H2 veritabanı konsolundan kullanıcı profilleri sorgulanabilir:
-        - URL: http://localhost:8080/h2-console
+✅ Kullanıcının belirttiği şehir için güncel hava durumu bilgilerini getirir.✅ Hava tahminlerini dinamik olarak sunar (API entegrasyonu ile genişletilebilir).
 
-10. Kullanım Alanları
-    - Chatbot: Kullanıcılar için dinamik bir sohbet botu olarak kullanılabilir.
-    - Kişisel Asistan: Kullanıcıya hava durumu bilgisi, adını hatırlama gibi kişisel asistan özellikleri sunabilir.
-    - AI Destekli Uygulamalar: Metin oluşturma veya anlamlandırma gibi özellikler için AI desteği sağlar.
-    - Eğitim Amaçlı: Spring Boot, H2 veritabanı ve REST API geliştirme süreçlerini öğrenmek için ideal bir proje yapısı sunar.
+4️⃣ Kullanıcı Profili Yönetimi
+
+✅ Kullanıcılar için isim kaydetme ve profil oluşturma desteği sunar.✅ Kullanıcının adı ve diğer bilgileri PostgreSQL veritabanında saklanır.✅ Kullanıcı, adını tekrar sormadan çağırabilir ("Benim adım ne?" gibi).
+
+5️⃣ Dinamik Sohbet Geliştirme
+
+✅ Kullanıcının sorduğu farklı sorulara esnek yanıtlar oluşturur.✅ "Bana bir şaka yap", "Nasıl gidiyor?" gibi sorulara eğlenceli yanıtlar verebilir.
+
+6️⃣ JWT ile Kullanıcı Kimlik Doğrulama
+
+✅ Kullanıcılar giriş yaparak JWT (JSON Web Token) ile kimlik doğrulaması yapabilir.✅ Yetkilendirme ve güvenlik mekanizması sayesinde sadece giriş yapan kullanıcılar mesaj gönderebilir.✅ API güvenliği sağlanmıştır.
+
+7️⃣ Google Speech API ile Sesli Mesaj Tanıma
+
+✅ Kullanıcı sesli mesaj gönderebilir ve bu mesaj metne çevrilebilir.✅ Google Speech-to-Text API kullanarak konuşmalar metne dönüştürülür.
+
+8️⃣ Web ve Mobil Uygulama Desteği İçin API
+
+✅ Proje içinde entegre bir HTML + JavaScript frontend bulunur.✅ Kullanıcı arayüzü üzerinden giriş yapıp sohbet edilebilir.✅ Dışarıdan React.js, Vue.js veya mobil uygulamalar ile kolayca bağlanabilir.
+
+🛠️ Teknolojiler ve Kullanılan Araçlar
+
+Backend: Java (Spring Boot, Spring Security, Spring Data JPA)
+
+Veritabanı: PostgreSQL
+
+Kimlik Doğrulama: JWT (JSON Web Token)
+
+AI Desteği: OpenAI API (ChatGPT)
+
+Sesli Mesaj Tanıma: Google Speech-to-Text API
+
+Frontend: HTML + JavaScript (static dizini içinde)
+
+💡 Projenin Kurulumu ve Çalıştırılması
+
+📌 Gereksinimler
+
+Java 17+
+
+Maven
+
+PostgreSQL (chatbot_db veritabanı oluşturulmalı)
+
+Ngrok (Eğer dışarıdan test edilecekse)
+
+📌 Kurulum Adımları
+
+1️⃣ PostgreSQL’i Çalıştır:
+
+net start postgresql  # Windows
+sudo systemctl start postgresql  # Linux / Mac
+
+2️⃣ Proje Klasörüne Gir:
+
+cd chatbot  # Proje klasörüne gir
+
+3️⃣ Maven ile Uygulamayı Başlat:
+
+mvn clean install
+mvn spring-boot:run
+
+4️⃣ Tarayıcıda Frontend’i Aç:
+
+http://localhost:8080/index.html
+
+5️⃣ Postman veya cURL ile API Testleri Yap:
+
+curl -X POST http://localhost:8080/auth/login -H "Content-Type: application/json" -d '{"username": "ali"}'
+
+Gelen JWT token ile API çağrıları yapabilirsiniz.
+
+🚀 Dışarıdan Erişim ve Ngrok ile Test Etme
+
+Eğer projeyi başka cihazlardan test etmek istiyorsan:
+1️⃣ Ngrok’u çalıştır:
+
+ngrok http 8080
+
+2️⃣ Ngrok’un verdiği URL’yi kullanarak test et:
+
+https://random-ngrok-id.ngrok.io/index.html
+
+📌 API Endpoint’leri
+
+HTTP Metodu
+
+Endpoint
+
+Açıklama
+
+POST
+
+/auth/login
+
+Kullanıcı girişi yapar, JWT döner.
+
+POST
+
+/api/chatbot/send
+
+Kullanıcının mesajını chatbot'a gönderir.
+
+POST
+
+/api/chatbot/speech-to-text
+
+Sesli mesajı metne çevirir.
+
+👨‍💻 Geliştirme ve Katkı Sağlama
+
+✅ Projeyi geliştirmek istiyorsan:
+
+Yeni API özellikleri ekleyebilirsin.
+
+Daha gelişmiş AI yanıtları oluşturabilirsin.
+
+Web veya mobil uygulama entegrasyonları yapabilirsin.
+
+📩 Geri bildirim veya katkı sağlamak istersen, benimle iletişime geçebilirsin! 🚀
