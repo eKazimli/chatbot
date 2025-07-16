@@ -10,8 +10,8 @@ import java.util.Date;
 @Service
 public class JwtService {
 
-    private static final String SECRET_KEY = "YOUR_SECRET_KEY_32CHARACTERSLONG";
-    private static final long EXPIRATION_TIME = 86400000; // 1 Gün
+    private static final String SECRET_KEY = "J7x$Lp9vZ@2qRm!cW4tFnE#yXsA8DbUh";
+    private static final long EXPIRATION_TIME = 86400000;
 
     private final Key key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
 
@@ -31,10 +31,5 @@ public class JwtService {
         } catch (JwtException e) {
             return false;
         }
-    }
-
-    public String extractUsername(String token) {
-        return Jwts.parserBuilder().setSigningKey(key).build()
-                .parseClaimsJws(token).getBody().getSubject();
     }
 }

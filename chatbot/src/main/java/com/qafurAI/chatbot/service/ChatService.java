@@ -66,7 +66,7 @@ public class ChatService {
         RESPONSE_POOL.put("greeting", Arrays.asList(
                 "Selam! Ben Qafurr, işte burada, ne var ne yok? 😎",
                 "Hey hey! Sohbet etmeye zaman bula biliyormusun? 🎉",
-                "Merhaba Kanki! Bugün ne oldu? nası gidiyor hayat? 🌟",
+                "Merhaba! Bugün ne oldu? nası gidiyor hayat? 🌟",
                 "Selam! Bugün nasıl gidiyor? Bence şahane bir gün. 🌈",
                 "Qafur burada! Birlikte güzel bir sohbet başlatalım mı? 🤩",
                 "Hey, konuşmaya hazırım! Ne var ne yok? 😉",
