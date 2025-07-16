@@ -111,8 +111,11 @@
             let r = await fetch('/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:u})});
             if(!r.ok) throw 'Giriş başarısız';
             let d = await r.json();
-            token = d.token; s.textContent = 'Giriş başarılı'; s.className='status success';
+            token = d.token;
+            localStorage.setItem("jwt", token);
+            s.textContent = 'Giriş başarılı'; s.className='status success';
             chatSection.style.display = 'block';
+            loginSection.style.display = 'none';
         } catch(e) { s.textContent = e; s.className='status error'; }
     }
 
@@ -159,8 +162,13 @@
         messageContainer.scrollTop = messageContainer.scrollHeight;
     }
 
-    function removeTyping() {
-        if (typingEl) typingEl.remove(), typingEl=null;
+    window.onload = () => {
+        const saved = localStorage.getItem("jwt");
+        if (saved) {
+            token = saved;
+            chatSection.style.display = 'block';
+            loginSection.style.display = 'none';
+        }
     }
 </script>
 </body>
