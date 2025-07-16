@@ -1,35 +1,49 @@
-🤖 Qafur – Yapay Zeka Destekli Akıllı Asistan, kullanıcı mesajlarını anlayarak doğal ve bağlamsal yanıtlar sunan, AI tabanlı modern bir sohbet botudur. Metin ve sesli mesaj desteğiyle kişiselleştirilmiş bir deneyim sunar.
+Qafur, müasir texnologiyalarla hazırlanmış, süni zəka əsaslı, real vaxtda insanlarla təbii dillə ünsiyyət qura bilən ağıllı bir chatbot sistemidir. Sistem həm yazılı, həm də səsli mesajları başa düşə bilir və kontekstə uyğun cavablar təqdim edir.
 
+✨ Əsas Xüsusiyyətlər
 
+💬 Real vaxtlı söhbət: Dinamik və mənalı cavablarla insan kimi danışıq təcrübəsi
 
+🧠 OpenAI GPT dəstəyi: Kreativ cavablar, məqalələr və tövsiyələr generasiya etmək imkanı
 
-🚀 Qafur Neler Yapabilir?
+🌤️ Şəhərə uyğun hava məlumatı: Canlı hava durumu OpenWeather API üzərindən
 
-💬 Gerçek zamanlı sohbet, dinamik ve anlamlı cevaplar
+🗣️ Səsli mesajları tanıma: Google Speech-to-Text ilə səsləri mətnə çevirə bilir
 
-🧠 OpenAI ile yaratıcı metin üretimi
+👤 İstifadəçi profili: JWT ilə autentifikasiya və istifadəçi məlumatlarının saxlanması
 
-🌤️ Şehre özel güncel hava durumu bilgisi
+🔐 Güvənlik: Spring Security ilə qorunan giriş sistemi
 
-🗣️ Sesli mesajları yazıya çevirme (Google Speech-to-Text)
+🌐 RESTful API: Veb və mobil tətbiqlərlə rahat inteqrasiya
 
-👤 Kullanıcı profili oluşturma ve tanıma
+🧪 Əhatə Olunan Mövzular
 
-🔐 JWT ile güvenli kullanıcı girişi
+OOP (Object-Oriented Programming) dizayn prinsipləri
 
-🌐 API tabanlı yapı ile web ve mobil entegrasyon
+REST API inkişafı
 
+Authentication & Authorization (JWT)
 
+API inteqrasiyaları (OpenAI, Google Speech, Weather)
 
+Asinxron cavab mexanizmləri
 
-🛠️ Kullanılan Teknolojiler
+Exception Handling və Error Management
 
-Backend: Java 17, Spring Boot, Spring Security
+Səsli və yazılı ünsiyyət sistemləri
 
-Veritabanı: PostgreSQL
+🧰 Texnologiyalar
 
-AI API: OpenAI GPT
+Java 17 - Backend proqramlaşdırma
 
-Ses Tanıma: Google Speech-to-Text
+Spring Boot - REST API strukturu və xidmətlər
 
-Frontend: HTML + JavaScript
+Spring Security - İstifadəçi doğrulama və güvənlik
+
+PostgreSQL - Verilənlər bazasının idarə edilməsi
+
+OpenAI GPT API - Süni zəka əsaslı cavablar
+
+Google Speech-to-Text - Səsli mesajların mətnə çevrilməsi
+
+HTML + JS - Sadə veb interfeys
