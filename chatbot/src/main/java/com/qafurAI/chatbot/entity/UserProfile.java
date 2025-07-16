@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
+@Setter
 @Entity
 @Table(name = "users")
 public class UserProfile {
@@ -12,13 +13,9 @@ public class UserProfile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Setter
     private String firstName;
-    @Setter
     private String lastName;
-    @Setter
     private int age;
-    @Setter
     private String birthDate;
 
     public UserProfile() {}
